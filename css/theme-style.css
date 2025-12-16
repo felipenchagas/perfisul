@@ -53,24 +53,6 @@ width: 100%;
    display: none;
 }
 
-#header2 .container {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-#header2 .navbar{
- margin-left:0px;
- margin-right: 0px;
- width: 100%;
- height: auto; /* Allow auto height */
- background:none;
- font-family: 'Open Sans', serif;
- font-size: 14px;
- border: none;
-}
-#header2 .navbar:after {
-display:none;
-}
 
 
 #header3 .navbar{
@@ -5521,71 +5503,6 @@ h1, h2, h3, h4, h5, h6, .font-style2 {
 }
 
 
-
-/* 3. Header & Navbar Modernization */
-
-
-/* --- FINAL LAYOUT FIXES --- */
-
-/* 1. Force the Header Container to be Centered and Fixed Width */
-#header2 .container {
-    width: 1170px !important; /* Standard Bootstrap Desktop Width */
-    max-width: 100%; /* Responsive fallback */
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-    float: none !important;
-    display: block !important;
-}
-
-/* 2. Navbar Structure Reset */
-#header2 .navbar {
-    width: 100% !important; /* Navbar fills the container */
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    min-height: 90px; /* Consistent height */
-    position: relative !important;
-}
-
-/* 3. Logo Positioning */
-.navbar-header {
-    float: left !important;
-    padding-left: 0 !important;
-    margin-left: 0 !important;
-}
-
-.navbar-brand {
-    padding: 20px 0 !important;
-    margin-left: 0 !important;
-    height: auto !important;
-    float: left !important;
-}
-
-/* 4. Menu Positioning */
-.navbar-collapse {
-    float: right !important; /* Force menu block to right */
-    padding-right: 0 !important;
-}
-
-.navbar-nav {
-    float: right !important; /* Force list items to right */
-    margin: 0 !important;
-}
-
-/* 5. Mobile Adjustments */
-@media (max-width: 768px) {
-    #header2 .container {
-        width: 100% !important;
-    }
-    .navbar-header, .navbar-collapse {
-        float: none !important;
-    }
-}
-
-
-
 /* --- FORCE FULL WIDTH & FIX LAYOUT (Added by Assistant) --- */
 
 .wrapper-boxed {
@@ -5607,25 +5524,13 @@ h1, h2, h3, h4, h5, h6, .font-style2 {
     width: 100% !important;
 }
 
-/* Header Content Centering */
-#header2 .container {
-    width: 100%;
-    max-width: 1170px !important;
-    margin: 0 auto !important;
-    padding-left: 15px;
-    padding-right: 15px;
-    float: none !important;
-    display: block;
+.navbar-brand {
+    padding: 20px 0 !important;
+    margin-left: 0 !important;
+    height: auto !important;
+    float: left !important;
 }
 
-/* Navbar Reset */
-#header2 .navbar {
-    width: 100% !important;
-    margin: 0 !important;
-    border: none !important;
-    background: transparent !important;
-    min-height: 90px;
-}
 
 /* --- FIX MENU DROPDOWN DISAPPEARING --- */
 /* Add invisible bridge so mouse doesn't lose focus */
