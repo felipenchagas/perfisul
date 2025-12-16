@@ -1387,7 +1387,7 @@ opacity: 0.9;
 .section_category16 {
    float: left; 
    width: 100%;
-   padding: 0px 0px 80px 0px;
+   padding: 0px 0px 0px;
 }
 .section_category16 .portfolio:after {
 	-moz-border-bottom-colors: none;
@@ -5520,9 +5520,7 @@ h1, h2, h3, h4, h5, h6, .font-style2 {
     margin-right: auto !important;
 }
 
-section, .sec-padding {
-    padding: 80px 0 !important; /* More breathing room */
-}
+
 
 /* 3. Header & Navbar Modernization */
 

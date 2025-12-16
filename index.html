@@ -21,9 +21,6 @@
 <!-- Web Fonts  -->
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,600|Lato:400,300,700,900' rel='stylesheet' type='text/css'>
 
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
 
 <!-- stylesheets -->
 <link rel="stylesheet" media="screen" href="js/bootstrap/css/bootstrap.min.css" type="text/css" />
@@ -32,7 +29,6 @@
 <link rel="stylesheet" href="css/theme-style.css" type="text/css" />
 <link rel="stylesheet" href="css/shortcodes.css" type="text/css" />
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="js/masterslider/style/masterslider.css" />
 <link href="js/animations/css/animations.min.css" rel="stylesheet" type="text/css" media="all" />
 <link href="js/owl-carousel/owl.carousel.css" rel="stylesheet">
 
@@ -41,22 +37,377 @@
 <!--Gallery-->
 <link href='js/simplelightbox/simplelightbox.min.css' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" media="screen" href="css/responsive-style.css" type="text/css" />
+<style>
+/* HERO FULL WIDTH mesmo dentro do boxed */
+.heroX{
+  position: relative;
+  height: 520px;
+  overflow: hidden;
 
-<!--Style Swicher-->
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background:#0b1220;
+}
+
+/* background slides (crossfade) */
+.heroX-bg{ position:absolute; inset:0; }
+.heroX-slide{
+  position:absolute; inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transform: scale(1.06);
+  transition: opacity 900ms ease, transform 6500ms ease;
+}
+.heroX-slide.is-active{
+  opacity:1;
+  transform: scale(1.12);
+}
+
+/* overlay mais “premium” (menos pesado que o seu) */
+.heroX-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.45) 0%,
+      rgba(0,0,0,.25) 45%,
+      rgba(0,0,0,.05) 75%,
+      rgba(0,0,0,0) 100%
+    );
+}
 
 
-<!-- Remove the below comments to use your color option -->
-<!--<link rel="stylesheet" href="css/colors/lightblue.css" />-->
-<!--<link rel="stylesheet" href="css/colors/orange.css" />-->
-<!--<link rel="stylesheet" href="css/colors/green.css" />-->
-<!--<link rel="stylesheet" href="css/colors/pink.css" />-->
-<!--<link rel="stylesheet" href="css/colors/red.css" />-->
-<!--<link rel="stylesheet" href="css/colors/purple.css" />-->
-<!--<link rel="stylesheet" href="css/colors/bridge.css" />-->
-<!--<link rel="stylesheet" href="css/colors/yellow.css" />-->
-<!--<link rel="stylesheet" href="css/colors/violet.css" />-->
-<!--<link rel="stylesheet" href="css/colors/blue.css" />-->
-<!--<link rel="stylesheet" href="css/colors/mossgreen.css" />-->
+/* conteúdo */
+.heroX-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  max-width: 760px;
+  color:#fff;
+}
+
+.heroX-badge{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  margin-bottom:14px;
+}
+
+.heroX-content h1{
+  margin:0 0 10px;
+  font-size: 52px;
+  line-height: 1.05;
+  font-weight: 900;
+  text-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.heroX-content p{
+  margin:0;
+  font-size:18px;
+  opacity:.92;
+  max-width: 620px;
+}
+
+.heroX-actions{
+  margin-top:22px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.heroX-btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:800;
+  text-decoration:none !important;
+}
+
+.heroX-btn-primary{
+  background:#f59e0b;
+  color:#111 !important;
+  box-shadow: 0 12px 30px rgba(245,158,11,.25);
+}
+
+.heroX-btn-ghost{
+  color:#fff !important;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+/* setas discretas */
+.heroX-nav{
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  z-index:3;
+  width:44px; height:44px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  background: rgba(0,0,0,.25);
+  color:#fff;
+  font-size:28px;
+  line-height:40px;
+  text-align:center;
+}
+.heroX-prev{ left:16px; }
+.heroX-next{ right:16px; }
+
+/* dots */
+.heroX-dots{
+  position:absolute;
+  left:50%;
+  transform: translateX(-50%);
+  bottom:16px;
+  display:flex;
+  gap:8px;
+  z-index:3;
+}
+.heroX-dot{
+  width:10px; height:10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.18);
+}
+.heroX-dot.is-active{
+  width:26px;
+  background:#f59e0b;
+  border-color:#f59e0b;
+}
+
+/* mobile */
+@media (max-width: 768px){
+  .heroX{ height: 460px; }
+  .heroX-content h1{ font-size: 36px; }
+  .heroX-nav{ display:none; }
+}
+.heroX-content h1{
+  color:#ffffff;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.65),
+    0 8px 30px rgba(0,0,0,.45);
+}
+
+.heroX-content p{
+  color:rgba(255,255,255,.95);
+  text-shadow:
+    0 1px 4px rgba(0,0,0,.6);
+}
+.heroX-content{
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.55) 0%,
+    rgba(0,0,0,.35) 55%,
+    rgba(0,0,0,0) 100%
+  );
+  padding: 28px 32px;
+  border-radius: 18px;
+  backdrop-filter: blur(2px);
+}
+.heroX-badge{
+  background: rgba(255,255,255,.18);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.35);
+  text-shadow: 0 1px 3px rgba(0,0,0,.6);
+}
+.heroX-btn-primary{
+  background:#ffb703;
+  color:#111 !important;
+  box-shadow: 0 10px 25px rgba(255,183,3,.45);
+}
+
+.heroX-btn-ghost{
+  background: rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.4);
+  color:#fff !important;
+}
+
+.section17-modern{
+  padding: 55px 0;
+  background: #f6f7f9;
+}
+
+.section17-modern .panel17{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:16px;
+  padding:22px;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+  height:100%;
+}
+
+.section17-modern .sec_title2 h1{
+  margin:0 0 16px;
+  font-weight:800;
+  font-size:26px;
+  letter-spacing:-.02em;
+}
+
+/* NEWS */
+.news-list{ display:flex; flex-direction:column; gap:14px; }
+
+.news-card{
+  display:flex;
+  gap:16px;
+  padding:14px;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,.07);
+  background:#fff;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.news-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 26px rgba(0,0,0,.08);
+}
+
+.news-thumb{
+  position:relative;
+  width:160px;
+  flex:0 0 160px;
+  border-radius:12px;
+  overflow:hidden;
+  background:#0b1220;
+}
+
+.news-thumb img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  display:block;
+  filter:saturate(1.05) contrast(1.05);
+}
+
+.news-date{
+  position:absolute;
+  left:10px;
+  top:10px;
+  background:rgba(0,0,0,.65);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:10px;
+  font-weight:700;
+  font-size:12px;
+  line-height:1.1;
+}
+
+.news-date span{
+  display:block;
+  font-size:16px;
+}
+
+.news-body h3{
+  margin:0 0 6px;
+  font-weight:800;
+  font-size:18px;
+}
+
+.news-meta{
+  font-size:12px;
+  color:#6b7280;
+  margin-bottom:8px;
+}
+
+.news-body p{
+  margin:0 0 10px;
+  color:#3b3f45;
+  font-size:13px;
+  line-height:1.55;
+}
+
+.news-link{
+  font-weight:800;
+  color:#0b5bd3;
+  text-decoration:none;
+}
+
+.news-link:hover{ text-decoration:underline; }
+
+/* Accordion: dar cara moderna SEM mexer no JS */
+.accordion-modern .accordion_in{
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,.08);
+  margin-bottom:10px;
+  background:#fff;
+}
+
+.accordion-modern .acc_head{
+  font-weight:800;
+  padding:14px 14px;
+  background:#f8fafc;
+}
+
+.accordion-modern .acc_content{
+  padding:14px 14px;
+  color:#3b3f45;
+  line-height:1.55;
+}
+
+/* Partners */
+.mt-30{ margin-top:22px; }
+
+.partners-grid{
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:10px;
+  margin-top:12px;
+}
+
+.partner{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,.08);
+  background:#fff;
+  padding:10px;
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.partner img{
+  max-width:100%;
+  max-height:44px;
+  filter:grayscale(1);
+  opacity:.9;
+}
+
+.partner:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(0,0,0,.08);
+}
+
+.partner:hover img{
+  filter:grayscale(0);
+  opacity:1;
+}
+
+/* Responsive */
+@media (max-width: 991px){
+  .news-card{ flex-direction:column; }
+  .news-thumb{ width:100%; flex:0 0 auto; }
+  .news-thumb img{ height:180px; }
+  .partners-grid{ grid-template-columns:repeat(3, 1fr); }
+}
+
+@media (max-width: 480px){
+  .partners-grid{ grid-template-columns:repeat(2, 1fr); }
+}
+
+</style>
 
 </head>
 
@@ -182,137 +533,31 @@
   <!--end menu-->
  <div class="clearfix"></div>
   
-  <div class="slider">
-  <!-- masterslider -->
-  <div class="master-slider ms-skin-default" id="masterslider"> 
-    
-    <!-- slide 1 -->
-    <div class="ms-slide slide-1 text-center" data-delay="9"> 
-    <img src="js/masterslider/blank.gif" data-src="images/slider/slide1.jpg" alt=""/>
-         
-      <h3 class="ms-layer text79"
-			style="left: 0px;top: 160px;"
-			data-type="text"
-			data-delay="500"
-			data-ease="easeOutExpo"
-			data-duration="1230"
-			data-effect="left(250)"> PERFISUL Fornecedor de Aço</h3>
-            
-      <h3 class="ms-layer text80"
-			style="left:0px;top: 230px;"
-			data-type="text"
-			data-delay="1000"
-			data-ease="easeOutExpo"
-			data-duration="1230"
-			data-effect="scale(1.5,1.6)">Fornecemos os mais variados tipos de ferragens</h3>
-            
-                 
-      <h3 class="ms-layer text78"
-        	style="left:0px; top: 300px;"
-            data-type="text"
-            data-effect="top(45)"
-            data-duration="2000"
-            data-delay="1500"
-            data-ease="easeOutExpo"> A Solução para sua obra você encontra aqui em um só lugar, PERFISUL. </h3>
-            
-             <a class="ms-layer sbut4"
-			style="left: 708px; top: 400px;"
-			data-type="text"
-			data-delay="2000"
-			data-ease="easeOutExpo"
-			data-duration="1200"
-			data-effect="left(250)"> <span>Orçamento</span> </a> 
-            
-           
-            
-     
-    </div>
-    <!-- end slide 1 --> 
-    
-    <!-- slide 2 -->
-    <div class="ms-slide slide-3" data-delay="9">
-         
-        <!-- slide background -->
-        <img src="js/masterslider/blank.gif" data-src="images/slider/slide2.jpg" alt=""/>
-        
-		<h3 class="ms-layer text1"
-			style="right:230px;top:160px;"
-			data-type="text"
-			data-ease="easeOutExpo"
-			data-delay="500"
-		 	data-duration="1400"
-		 	data-effect="skewleft(30,80)"> Empresa Fornecedora de Aço</h3>
-            
-      <h3 class="ms-layer text2"
-			style="right:230px;top:215px;"
-			data-type="text"
-			data-ease="easeOutExpo"
-			data-delay="1000"
-		 	data-duration="1400"
-		 	data-effect="skewright(30,80)"> Fornecemos Perfil U - W - I </h3>
-            
-      <h3 class="ms-layer text4"
-        	style="right: 230px; top: 283px;"
-            data-type="text"
-            data-effect="top(45)"
-            data-duration="2000"
-            data-delay="1500"
-            data-ease="easeOutExpo"> Conte conosco, tudo em perfis de aço <br /> material da mais alta qualidade. </h3>
-        
-      <a class="ms-layer sbut5 blue"
-			style="right: 220px; top: 365px;"
-			data-type="text"
-			data-delay="2000"
-			data-ease="easeOutExpo"
-			data-duration="1200"
-			data-effect="scale(1.5,1.6)"> Perfils de Aço </a> 
-            
-
-		
-
-		
-
-
-    </div>
-    <!-- end slide 2 -->
-	
-    <!-- slide 3 -->
-    <div class="ms-slide slide-3" data-delay="9">
-      
-      <img src="js/masterslider/blank.gif" data-src="images/slider/slide3.jpg" alt=""/>
-      
-      <h3 class="ms-layer text44"
-			style="right: 230px;top: 180px;"
-			data-type="text"
-			data-delay="500"
-			data-ease="easeOutExpo"
-			data-duration="1230"
-			data-effect="scale(1.5,1.6)"> Tubos Metálicos </h3>
-            
-      <h3 class="ms-layer text45"
-			style="right: 230px;top: 245px;"
-			data-type="text"
-			data-delay="1000"
-			data-ease="easeOutExpo"
-			data-duration="1230"
-			data-effect="scale(5.5,1.6)"> Tubos de Aço Quadrados, Redondos e Retangulares </h3>
-            
-
-            
-            <a class="ms-layer sbut7"
-			style="right: 390px; top: 420px;"
-			data-type="text"
-			data-delay="2500"
-			data-ease="easeOutExpo"
-			data-duration="1200"
-			data-effect="scale(1.5,1.6)"> Orçamento </a> 
-            
-            </div>
-    <!-- end slide 3 -->
-    
+<section class="heroX" id="heroX">
+  <div class="heroX-bg">
+    <div class="heroX-slide is-active" style="background-image:url('images/slider/slide1.jpg')"></div>
+    <div class="heroX-slide" style="background-image:url('images/slider/slide2.jpg')"></div>
+    <div class="heroX-slide" style="background-image:url('images/slider/slide3.jpg')"></div>
+    <div class="heroX-overlay"></div>
   </div>
-  <!-- end of masterslider -->
-   </div>
+
+  <div class="container heroX-content">
+    <div class="heroX-badge">PERFISUL • Soluções em Aço</div>
+    <h1>Fornecedor de Aço em Curitiba</h1>
+    <p>Tubos, perfis, chapas e barras com qualidade industrial e entrega ágil.</p>
+
+    <div class="heroX-actions">
+      <a href="contato-tubos-orcamento" class="heroX-btn heroX-btn-primary">Solicitar orçamento</a>
+      <a href="empresa-acos-perfisul-pr-sc-rs" class="heroX-btn heroX-btn-ghost">Conhecer a empresa</a>
+    </div>
+  </div>
+
+  <button class="heroX-nav heroX-prev" type="button" aria-label="Anterior">‹</button>
+  <button class="heroX-nav heroX-next" type="button" aria-label="Próximo">›</button>
+
+  <div class="heroX-dots" aria-label="Navegação do slider"></div>
+</section>
+
   <div class="clearfix"></div>
 
  <section class="section_category12">
@@ -381,7 +626,7 @@
  <div class="row">
  <div class="col-lg-12  center">
  <div  class="sec_title2"><h1>Nossos Produtos</h1></div>
- <p>Nossa empresa trabalha com fabricação, corte e fornecimento de vários produtos de ferragens e aço o quais você pode precisar ou estar procurando, são eles tais como: tubos industriais, chapas, perfis, vigas, aços e ferros para muitos fins. Aqui na PERFISUL nossos clientes encontram responsabilidade e tradição no ramo de aço, a necessidade de um parceiro de confiança e qualidade no fornecimento de peças, tubos, perfis e outros fez com que a gente inicie nessa área com o foco no cliente em um atendimento diferenciado, ágil e de altissima qualidade para todo o território nacional.</p><br><br><br><br>
+ <p>Nossa empresa trabalha com fabricação, corte e fornecimento de vários produtos de ferragens e aço o quais você pode precisar ou estar procurando, são eles tais como: tubos industriais, chapas, perfis, vigas, aços e ferros para muitos fins. Aqui na PERFISUL nossos clientes encontram responsabilidade e tradição no ramo de aço, a necessidade de um parceiro de confiança e qualidade no fornecimento de peças, tubos, perfis e outros fez com que a gente inicie nessa área com o foco no cliente em um atendimento diferenciado, ágil e de altissima qualidade para todo o território nacional.</p>
  </div>
 </div>
 <div class="margin-top4"></div>
@@ -608,7 +853,7 @@
 
 </div>
 <a href="#" class="btn btn-border white uppercase margin-left-2"><span>Mais Produtos</span></a>
-
+<br><br>
 </div>
 </div>
 </section>
@@ -616,96 +861,92 @@
 <!--end section-->
 <div class="clearfix"></div>
 
-<section class="section_category17">
+<section class="section_category17 section17-modern">
+  <div class="container">
+    <div class="row">
 
-<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 left">
-<div class="l-news">
-<div  class="sec_title2"><h1>News</h1></div>
-<div class="clearfix"></div>
-<div class="clearfix margin-top2"></div>
+      <!-- LEFT: NEWS -->
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="panel17">
+          <div class="sec_title2"><h1>News</h1></div>
 
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 animate-in" data-anim-type="zoom-in" data-anim-delay="100">
-<div class="news-box">
-<div class="v-line"></div>
-<div class="thumb"><img src="images/inicio/tubo-metalico-pr.jpg" class="img-responsive" alt=""></div>
-<div class="date"><span class="day">20</span> Jul</div>
-</div>
-</div>
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-<div class="news-text">
-<h3>Tubos Metálicos</h3>
-<p> Fornecedor / Fabricante / sob medida</p> 
-<p>Os tubos metálicos aqui na PERFISUL são um de nossos produtos que mais saem, devido a alta qualidade dos nossos tubos. A qualidade do tubo metálico se faz necessário devido ao seu uso... </p>
-<a href="#">Tubos Metálicos</a>
-</div></div>
+          <div class="news-list">
 
-<div class="clearfix margin-top4"></div>
+            <!-- Item 1 -->
+            <article class="news-card">
+              <div class="news-thumb">
+                <img src="images/inicio/tubo-metalico-pr.jpg" alt="Tubos Metálicos">
+                <div class="news-date"><span>20</span> Jul</div>
+              </div>
+              <div class="news-body">
+                <h3>Tubos Metálicos</h3>
+                <div class="news-meta">Fornecedor / Fabricante / sob medida</div>
+                <p>Os tubos metálicos aqui na PERFISUL são um de nossos produtos que mais saem, devido a alta qualidade dos nossos tubos. A qualidade do tubo metálico se faz necessário devido ao seu uso...</p>
+                <a class="news-link" href="#">Tubos Metálicos <i class="fa fa-angle-right"></i></a>
+              </div>
+            </article>
 
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 animate-in" data-anim-type="zoom-in" data-anim-delay="100">
-<div class="news-box">
-<div class="v-line"></div>
-<div class="thumb"><img src="images/inicio/perfil-metalico-pr.jpg" class="img-responsive" alt=""></div>
-<div class="date"><span class="day">17</span> Fev</div>
-</div>
-</div>
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-<div class="news-text">
-<h3>Perfils de Aço</h3>
-<p> Perfil U / Perfil I  / Perfil W</p> 
-<p>Aqui temos em nossa gama de produtos muitos tipos de perfil, sendo que são todos entregue sob medida de acordo com a necessidade do cliente, nossa garantia de qualidade se faz necessária devido ao respeito a nossa marca. </p>
-<a href="#">Perfis Metálicos</a>
-</div></div>
+            <!-- Item 2 -->
+            <article class="news-card">
+              <div class="news-thumb">
+                <img src="images/inicio/perfil-metalico-pr.jpg" alt="Perfis de Aço">
+                <div class="news-date"><span>17</span> Fev</div>
+              </div>
+              <div class="news-body">
+                <h3>Perfis de Aço</h3>
+                <div class="news-meta">Perfil U / Perfil I / Perfil W</div>
+                <p>Aqui temos em nossa gama de produtos muitos tipos de perfil, sendo que são todos entregue sob medida de acordo com a necessidade do cliente, nossa garantia de qualidade se faz necessária devido ao respeito a nossa marca.</p>
+                <a class="news-link" href="#">Perfis Metálicos <i class="fa fa-angle-right"></i></a>
+              </div>
+            </article>
 
-</div>
-</div>
-
-<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 right">
-<div class="choose">
-<div  class="sec_title2"><h1>Por que Escolher a PERFISUL</h1></div>
-<div class="clearfix margin-top2"></div>
- <div class="accordion_holder">
-          <div class="accordion_example1"> 
-            
-            <!-- Section 1 -->
-            <div class="accordion_in two acc_active">
-              <div class="acc_head">Qualidade e Garantia</div>
-              <div class="acc_content">Temos uma garantia diferenciada em nossos produtos, visando sempre a necessidade da alta durabilidade das peças em campo, ninguém quer passar por imprevistos na hora da instalação. Com isso em mente nosso material passa por um rigoroso critério de qualidade. </div>
-            </div>
-            
-            <!-- Section 2 -->
-            <div class="accordion_in two">
-              <div class="acc_head">O Melhor do Aço</div>
-              <div class="acc_content">O Aço é um dos materiais mais confiáveis existentes para obras e afins, logo a necessidade dele se faz por todo o Brasil, com isso a PERFISUL participa e está presente nas mais diversas obras.</div>
-            </div>
-            
-            <!-- Section 3 -->
-            <div class="accordion_in two">
-              <div class="acc_head">A Melhor Equipe</div>
-              <div class="acc_content">Nossos colaboradores são respeitados por serem especialistas em sua área, de nada adianta o melhor produto se eles não forem acompanhados dos melhores profissionais, para fabricar e também na área profissional para tirar dúvidas e dar suporte pró ativo aos clientes.</div>
-            </div>
           </div>
         </div>
-        <!-- Accordion end -->
-        
- <div class="clearfix margin-top3"></div> 
- 
- <div class="sec_title2"><h1>Parceiros</h1></div>
-<div class="clearfix margin-top1"></div>
-<div class="clearfix"></div>
+      </div>
 
-<div class="client-box" data-anim-type="zoom-in-up" data-anim-delay="100"><img src="images/clients/07.png"></div>
-<div class="client-box" data-anim-type="zoom-in-up" data-anim-delay="200"><img src="images/clients/08.png"></div>
-<div class="client-box" data-anim-type="zoom-in-up" data-anim-delay="300"><img src="images/clients/09.png"></div>
-<div class="client-box" data-anim-type="zoom-in-up" data-anim-delay="100"><img src="images/clients/07.png"></div>
-<div class="client-box" data-anim-type="zoom-in-up" data-anim-delay="200"><img src="images/clients/08.png"></div>
+      <!-- RIGHT: CHOOSE + PARTNERS -->
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="panel17">
+          <div class="sec_title2"><h1>Por que Escolher a PERFISUL</h1></div>
 
+          <div class="accordion_holder accordion-modern">
+            <div class="accordion_example1">
 
-</div>
+              <div class="accordion_in two acc_active">
+                <div class="acc_head">Qualidade e Garantia</div>
+                <div class="acc_content">Temos uma garantia diferenciada em nossos produtos, visando sempre a necessidade da alta durabilidade das peças em campo, ninguém quer passar por imprevistos na hora da instalação. Com isso em mente nosso material passa por um rigoroso critério de qualidade.</div>
+              </div>
 
+              <div class="accordion_in two">
+                <div class="acc_head">O Melhor do Aço</div>
+                <div class="acc_content">O Aço é um dos materiais mais confiáveis existentes para obras e afins, logo a necessidade dele se faz por todo o Brasil, com isso a PERFISUL participa e está presente nas mais diversas obras.</div>
+              </div>
 
-</div>
+              <div class="accordion_in two">
+                <div class="acc_head">A Melhor Equipe</div>
+                <div class="acc_content">Nossos colaboradores são respeitados por serem especialistas em sua área, de nada adianta o melhor produto se eles não forem acompanhados dos melhores profissionais, para fabricar e também na área profissional para tirar dúvidas e dar suporte pró ativo aos clientes.</div>
+              </div>
 
+            </div>
+          </div>
+
+          <div class="sec_title2 mt-30"><h1>Parceiros</h1></div>
+
+          <div class="partners-grid">
+            <a class="partner" href="#"><img src="images/clients/07.png" alt="Parceiro 1"></a>
+            <a class="partner" href="#"><img src="images/clients/08.png" alt="Parceiro 2"></a>
+            <a class="partner" href="#"><img src="images/clients/09.png" alt="Parceiro 3"></a>
+            <a class="partner" href="#"><img src="images/clients/07.png" alt="Parceiro 4"></a>
+            <a class="partner" href="#"><img src="images/clients/08.png" alt="Parceiro 5"></a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
+
 
 <div class="clearfix"></div>
 
@@ -814,12 +1055,87 @@
 <!-- ========== Js Files ========== --> 
 
 <script type="text/javascript" src="js/universal/jquery.js"></script> 
+
+<script>
+(function(){
+  const root = document.getElementById('heroX');
+  if(!root) return;
+
+  const slides = Array.from(root.querySelectorAll('.heroX-slide'));
+  const dotsWrap = root.querySelector('.heroX-dots');
+  const prevBtn = root.querySelector('.heroX-prev');
+  const nextBtn = root.querySelector('.heroX-next');
+
+  let index = 0;
+  let timer = null;
+  const AUTOPLAY = 6500;
+
+  // dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.type = 'button';
+    d.className = 'heroX-dot' + (i === 0 ? ' is-active' : '');
+    d.setAttribute('aria-label', 'Slide ' + (i+1));
+    d.addEventListener('click', () => go(i, true));
+    dotsWrap.appendChild(d);
+  });
+
+  const dots = Array.from(root.querySelectorAll('.heroX-dot'));
+
+  function setActive(i){
+    slides.forEach((s,k)=> s.classList.toggle('is-active', k===i));
+    dots.forEach((d,k)=> d.classList.toggle('is-active', k===i));
+    index = i;
+  }
+
+  function go(i, user){
+    const next = (i + slides.length) % slides.length;
+    setActive(next);
+    if(user) restart();
+  }
+
+  function next(user){ go(index+1, user); }
+  function prev(user){ go(index-1, user); }
+
+  function start(){
+    stop();
+    timer = setInterval(()=> next(false), AUTOPLAY);
+  }
+  function stop(){
+    if(timer) clearInterval(timer);
+    timer = null;
+  }
+  function restart(){ start(); }
+
+  nextBtn && nextBtn.addEventListener('click', ()=> next(true));
+  prevBtn && prevBtn.addEventListener('click', ()=> prev(true));
+
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+
+  // swipe mobile
+  let x0=null;
+  root.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive:true});
+  root.addEventListener('touchend', e => {
+    if(x0===null) return;
+    const x1 = e.changedTouches[0].clientX;
+    const dx = x1 - x0;
+    x0=null;
+    if(Math.abs(dx)>40) (dx<0 ? next(true) : prev(true));
+  }, {passive:true});
+
+  setActive(0);
+  start();
+})();
+</script>
+
+</script>
+
 <script src="js/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> 
 <script src="js/mainmenu/customeUI.js"></script>
 <script type="text/javascript" src="js/tabs/smk-accordion.js"></script>
 <script type="text/javascript" src="js/tabs/custom.js"></script> 
 <script src="js/mainmenu/jquery.sticky.js"></script> 
-<script src="js/masterslider/masterslider.min.js"></script> 
 
 <script type="text/javascript" src="js/ytplayer/jquery.mb.YTPlayer.js"></script> 
 <script type="text/javascript" src="js/ytplayer/elementvideo-custom.js"></script> 
