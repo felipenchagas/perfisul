@@ -1,0 +1,26 @@
+RewriteEngine On
+Options +FollowSymlinks
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteCond %{HTTPS}s on(s)|offs()
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [NE,L,R]
+
+
+RewriteCond %{THE_REQUEST} \ /(.+/)?index(\.html)?(\?.*)?\  [NC]
+RewriteRule ^(.+/)?index(\.html)?$ /%1 [R=301,L]
+
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+
+RewriteCond %{SCRIPT_FILENAME}.html -f
+RewriteRule [^/]$ %{REQUEST_URI}.html [QSA,L]
+
+
+
+RewriteCond %{HTTP_HOST} ^acosbettega.com.br$
+RewriteRule ^/?$ "https\:\/\/www\.acosbettega\.com\.br\/" [R=301,L]
+
+
+ErrorDocument 404 /404.html
