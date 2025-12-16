@@ -61,18 +61,704 @@
 <!--Style Swicher-->
 <link rel="stylesheet" href="js/style-swicher/style-swicher.css" type="text/css" />
 
-<!-- Remove the below comments to use your color option -->
-<!--<link rel="stylesheet" href="css/colors/lightblue.css" />-->
-<!--<link rel="stylesheet" href="css/colors/orange.css" />-->
-<!--<link rel="stylesheet" href="css/colors/green.css" />-->
-<!--<link rel="stylesheet" href="css/colors/pink.css" />-->
-<!--<link rel="stylesheet" href="css/colors/red.css" />-->
-<!--<link rel="stylesheet" href="css/colors/purple.css" />-->
-<!--<link rel="stylesheet" href="css/colors/bridge.css" />-->
-<!--<link rel="stylesheet" href="css/colors/yellow.css" />-->
-<!--<link rel="stylesheet" href="css/colors/violet.css" />-->
-<!--<link rel="stylesheet" href="css/colors/blue.css" />-->
-<!--<link rel="stylesheet" href="css/colors/mossgreen.css" />-->
+<style>
+
+
+/* =========================
+   HEADER / NAVBAR (clean premium)
+========================= */
+#header2{
+  background:#ffffff !important;
+  border-bottom:1px solid rgba(0,0,0,.06) !important;
+  box-shadow:0 12px 35px rgba(0,0,0,.08) !important;
+}
+#header2 .navbar{
+  background:transparent !important;
+  border:0 !important;
+  margin:0 !important;
+}
+#header2 .navbar-header{
+  padding:10px 0 !important;
+}
+#header2 .navbar-brand img{
+  max-height:64px !important;
+}
+
+#navbar-collapse-grid.navbar-collapse{
+  padding-right:0 !important;
+}
+
+#header2 .navbar-nav > li > a{
+  color:#0b1220 !important;
+  font-weight:800 !important;
+  letter-spacing:.2px !important;
+  padding:22px 16px !important;
+  position:relative !important;
+  background:transparent !important;
+  border-radius:12px !important;
+  transition:.18s ease !important;
+}
+
+#header2 .navbar-nav > li > a:hover{
+  background:rgba(11,18,32,.05) !important;
+}
+
+#header2 .navbar-nav > li > a:after{
+  content:"" !important;
+  position:absolute !important;
+  left:16px !important;
+  right:16px !important;
+  bottom:12px !important;
+  height:2px !important;
+  background:#f59e0b !important;
+  transform:scaleX(0) !important;
+  transform-origin:left !important;
+  transition:.2s ease !important;
+  border-radius:2px !important;
+}
+#header2 .navbar-nav > li > a:hover:after,
+#header2 .navbar-nav > li > a.active:after{
+  transform:scaleX(1) !important;
+}
+
+/* CTA: Contato Tubos (último item) */
+#header2 .navbar-nav > li:last-child > a{
+  background:#f59e0b !important;
+  color:#111 !important;
+  padding:12px 18px !important;
+  margin-top:12px !important;
+  font-weight:900 !important;
+  border-radius:14px !important;
+  box-shadow:0 12px 28px rgba(245,158,11,.35) !important;
+}
+#header2 .navbar-nav > li:last-child > a:after{
+  display:none !important;
+}
+#header2 .navbar-nav > li:last-child > a:hover{
+  filter:brightness(1.03) !important;
+}
+
+/* DROPDOWN / MEGA MENU (Produtos) */
+#header2 .dropdown-menu{
+  border-radius:18px !important;
+  border:1px solid rgba(0,0,0,.08) !important;
+  box-shadow:0 25px 70px rgba(0,0,0,.18) !important;
+  padding:18px 18px !important;
+  margin-top:10px !important;
+  background:#fff !important;
+}
+
+#header2 .yamm-content p{
+  color:#0b1220 !important;
+  font-weight:900 !important;
+  margin:0 0 10px 0 !important;
+  padding-bottom:8px !important;
+  border-bottom:1px solid rgba(0,0,0,.08) !important;
+}
+
+#header2 .yamm-content a{
+  color:#334155 !important;
+  font-weight:700 !important;
+  font-size:13px !important;
+  padding:6px 0 !important;
+  display:block !important;
+  transition:.15s ease !important;
+}
+#header2 .yamm-content a i{
+  color:#f59e0b !important;
+  margin-right:6px !important;
+}
+#header2 .yamm-content a:hover{
+  color:#0b1220 !important;
+  transform:translateX(4px) !important;
+}
+
+/* MOBILE btn */
+#header2 .navbar-toggle{
+  border:0 !important;
+  background:rgba(11,18,32,.06) !important;
+  border-radius:12px !important;
+  margin-top:18px !important;
+}
+#header2 .navbar-toggle .icon-bar{
+  background:#0b1220 !important;
+}
+
+/* alinhamento marca */
+#header2 .container { position: relative; }
+
+#header2 .navbar-header{
+  padding: 14px 0 !important;
+}
+#header2 .navbar-brand{
+  padding: 0 !important;
+  margin: 0 !important;
+  display:flex !important;
+  align-items:center !important;
+}
+#header2 .navbar-brand img{
+  display:block !important;
+  max-height:64px !important;
+}
+
+#header2 .navbar-collapse{
+  margin-top: 6px !important;
+}
+
+@media (min-width: 992px){
+  #header2 .navbar-header{ margin-left:0 !important; }
+  #header2 .navbar-nav{ margin-right:0 !important; }
+}
+
+/* PONTE anti-fechamento no desktop */
+@media (min-width: 992px){
+  #header2 .navbar-nav > li.dropdown.yamm-fw{ position: static !important; }
+
+  #header2 .navbar-nav > li.dropdown.yamm-fw > a.dropdown-toggle{
+    position: relative;
+  }
+
+  #header2 .navbar-nav > li.dropdown.yamm-fw > a.dropdown-toggle::after{
+    content:"";
+    position:absolute;
+    left:-30px;
+    right:-30px;
+    top:100%;
+    height:26px;
+    background:transparent;
+  }
+
+  #header2 .navbar-nav > li.dropdown.yamm-fw:hover > .dropdown-menu{
+    display:block;
+  }
+
+  #header2 .navbar-nav > li.dropdown.yamm-fw > .dropdown-menu{
+    margin-top: 0 !important;
+  }
+}
+
+#header2, #header2 .navbar, #header2 .container{
+  overflow: visible !important;
+}
+
+/* =========================================================
+   CONTATO – Titlebar two + Cards (CSS ONLY)
+========================================================= */
+
+/* -------------------------
+   1) TITLEBAR TWO (hero clean)
+-------------------------- */
+.titlebar.two{
+  position: relative;
+  background: #0b1220;
+  padding: 0 !important;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* se não tem imagem aqui, criamos textura/gradiente */
+.titlebar.two:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(900px 420px at 20% 10%, rgba(59,130,246,.18), transparent 55%),
+    radial-gradient(700px 380px at 90% 40%, rgba(245,158,11,.14), transparent 60%),
+    linear-gradient(180deg, #0b1220 0%, #070b12 100%);
+  opacity: 1;
+}
+
+/* conteúdo do titlebar */
+.titlebar.two .container{
+  position: relative;
+  z-index: 2;
+  padding: 34px 0 26px;
+}
+
+/* grid do breadcrumb */
+.titlebar.two .breadcrumb{
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+/* título */
+.titlebar.two h1{
+  margin:0 !important;
+  color:#fff !important;
+  font-weight: 900 !important;
+  letter-spacing:.2px;
+  font-size: 28px;
+  line-height:1.15;
+  text-shadow: 0 12px 30px rgba(0,0,0,.35);
+}
+
+/* breadcrumb a direita */
+.titlebar.two .pagenation{
+  margin-top: 10px;
+  text-align:right;
+  color: rgba(255,255,255,.82) !important;
+  font-weight:700;
+  font-size: 13px;
+}
+.titlebar.two .pagenation a{
+  color: rgba(255,255,255,.92) !important;
+  text-decoration:none !important;
+}
+.titlebar.two .pagenation a:hover{ color:#f59e0b !important; }
+.titlebar.two .pagenation i{
+  color: rgba(245,158,11,.95) !important;
+  margin: 0 6px;
+}
+
+@media (max-width: 991px){
+  .titlebar.two h1{ font-size:24px; }
+  .titlebar.two .pagenation{ text-align:left; }
+}
+
+/* -------------------------
+   2) SEÇÃO CONTATO (layout e cards)
+-------------------------- */
+.sec-padding.mt-20{
+  padding-top: 34px !important;
+}
+
+/* espaço entre colunas no mobile */
+@media (max-width: 991px){
+  .sec-padding.mt-20 .col-md-4{ margin-bottom: 16px; }
+}
+
+/* card Endereço */
+.address_1{
+  background:#fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 18px;
+  padding: 18px 18px;
+  box-shadow: 0 14px 35px rgba(2,6,23,.06);
+}
+.address_1 h4{
+  margin: 0 0 12px !important;
+  font-weight: 900;
+  color:#0b1220;
+}
+
+/* tipografia do endereço */
+.address_1 .contact-address{
+  color: rgba(15,23,42,.78);
+  line-height: 1.75;
+  font-size: 14px;
+}
+.address_1 .contact-address p{
+  margin-top: 12px;
+  color: rgba(15,23,42,.78);
+}
+.address_1 .contact-address i{
+  color:#f59e0b;
+  width: 18px;
+  text-align:center;
+  margin-right: 6px;
+}
+.address_1 .contact-address a{
+  color:#0b5bd3;
+  font-weight: 800;
+  text-decoration:none !important;
+}
+.address_1 .contact-address a:hover{ text-decoration:underline !important; }
+
+/* -------------------------
+   3) Card do Formulário (smart-forms)
+-------------------------- */
+.smart-forms{
+  background:#fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 18px;
+  padding: 20px 20px 16px;
+  box-shadow: 0 14px 35px rgba(2,6,23,.06);
+}
+
+.smart-forms h3{
+  margin: 0 0 10px !important;
+  font-weight: 900;
+  color:#0b1220;
+}
+.smart-forms p{
+  color: rgba(15,23,42,.78);
+  line-height: 1.75;
+  font-size: 14.5px;
+}
+
+/* inputs */
+.smart-forms .gui-input,
+.smart-forms .gui-textarea{
+  border-radius: 14px !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.smart-forms .gui-input:focus,
+.smart-forms .gui-textarea:focus{
+  border-color: rgba(245,158,11,.55) !important;
+  box-shadow: 0 0 0 4px rgba(245,158,11,.14) !important;
+}
+
+/* ícone do input */
+.smart-forms .field-icon{
+  color: rgba(15,23,42,.55) !important;
+}
+.smart-forms .field.prepend-icon .field-icon i{
+  color: rgba(15,23,42,.55) !important;
+}
+
+/* textarea */
+.smart-forms .gui-textarea{
+  min-height: 130px;
+  resize: vertical;
+}
+
+/* hint */
+.smart-forms .input-hint{
+  display:block;
+  margin-top: 8px;
+  color: rgba(15,23,42,.62);
+  font-size: 12.5px;
+}
+.smart-forms .input-hint strong{
+  color:#0b1220;
+}
+
+/* footer botões */
+.smart-forms .form-footer{
+  border-top: 1px solid rgba(0,0,0,.06);
+  margin-top: 14px;
+  padding-top: 14px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* botão enviar */
+.smart-forms .button.btn-primary{
+  border:0 !important;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24) !important;
+  color:#111 !important;
+  font-weight: 900 !important;
+  border-radius: 14px !important;
+  padding: 12px 18px !important;
+  box-shadow: 0 14px 34px rgba(245,158,11,.22);
+  transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+}
+.smart-forms .button.btn-primary:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow: 0 0 0 6px rgba(245,158,11,.14);
+}
+
+/* botão cancelar */
+.smart-forms .button{
+  border-radius: 14px !important;
+  padding: 12px 18px !important;
+  font-weight: 900 !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+  background: rgba(11,18,32,.04) !important;
+  color:#0b1220 !important;
+}
+.smart-forms .button:hover{
+  background: rgba(11,18,32,.06) !important;
+}
+
+
+
+/* =========================
+   FOOTER PERFISUL (CSS ONLY)
+========================= */
+.section-dark.sec-padding{
+  background: linear-gradient(180deg, #0b1220 0%, #070b12 100%) !important;
+  padding: 64px 0 !important;
+  color: rgba(255,255,255,.82);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.section-dark.sec-padding .row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px 0;
+}
+
+.section-dark.sec-padding .colmargin{
+  margin: 0 !important;
+}
+
+.section-dark.sec-padding .col-lg-3,
+.section-dark.sec-padding .col-md-3,
+.section-dark.sec-padding .col-sm-6{
+  padding: 0 14px;
+}
+
+.section-dark.sec-padding .col-lg-3 > *{
+  position: relative;
+}
+
+.section-dark.sec-padding .col-lg-3{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px;
+  padding: 22px 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.section-dark.sec-padding .col-lg-3:hover{
+  transform: translateY(-2px);
+  border-color: rgba(245,158,11,.25);
+  background: rgba(255,255,255,.04);
+}
+
+.footer-logo2 img{
+  max-width: 170px;
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
+  opacity: .95;
+  margin-bottom: 14px;
+}
+
+.footer-title2{
+  color: #fff !important;
+  font-weight: 800;
+  letter-spacing: .2px;
+  margin: 2px 0 12px !important;
+  font-size: 18px;
+}
+
+.footer-title2-bottomstrip{
+  height: 3px !important;
+  width: 46px !important;
+  background: linear-gradient(90deg, #f59e0b, rgba(245,158,11,.2)) !important;
+  border-radius: 99px;
+  margin-bottom: 16px !important;
+  opacity: 1 !important;
+}
+
+.address-info-2 li{
+  color: rgba(255,255,255,.78) !important;
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.address-info-2 li i{
+  color: rgba(245,158,11,.95) !important;
+  width: 18px;
+  text-align: center;
+  margin-right: 8px;
+}
+
+.usefull-links-2 li a{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: rgba(255,255,255,.78) !important;
+  text-decoration: none !important;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+
+.usefull-links-2 li a i{
+  color: rgba(255,255,255,.35) !important;
+  transition: color .2s ease;
+}
+
+.usefull-links-2 li a:hover{
+  background: rgba(245,158,11,.12);
+  color: #fff !important;
+  transform: translateX(2px);
+}
+
+.usefull-links-2 li a:hover i{
+  color: rgba(245,158,11,.95) !important;
+}
+
+.section-dark.sec-padding p{
+  color: rgba(255,255,255,.70) !important;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.newsletter .email_input2{
+  width: 100%;
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+  border-radius: 12px !important;
+  padding: 12px 12px !important;
+  color: #fff !important;
+  margin-bottom: 10px;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.newsletter .email_input2::placeholder{
+  color: rgba(255,255,255,.45);
+}
+
+.newsletter .email_input2:focus{
+  border-color: rgba(245,158,11,.45) !important;
+  box-shadow: 0 0 0 4px rgba(245,158,11,.12);
+  background: rgba(255,255,255,.08) !important;
+}
+
+.newsletter .input_submit2{
+  width: 100%;
+  border: 0 !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24) !important;
+  color: #111 !important;
+  font-weight: 800;
+  letter-spacing: .2px;
+  box-shadow: 0 12px 26px rgba(245,158,11,.18);
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.newsletter .input_submit2:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+.social-icons-3{
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social-icons-3 li a{
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  color: rgba(255,255,255,.80) !important;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.social-icons-3 li a:hover{
+  transform: translateY(-2px);
+  background: rgba(245,158,11,.14);
+  border-color: rgba(245,158,11,.35);
+  color: #fff !important;
+}
+
+.fo-postimg-inner2{
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 10px 22px rgba(0,0,0,.25);
+}
+
+.text-box-right h5 a{
+  color: #fff !important;
+  font-weight: 800;
+  text-decoration: none !important;
+}
+
+.text-box-right span{
+  color: rgba(255,255,255,.65) !important;
+  font-size: 13px;
+}
+
+.divider-line.dashed.dark-2{
+  border-color: rgba(255,255,255,.10) !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 991px){
+  .section-dark.sec-padding{
+    padding: 44px 0 !important;
+  }
+  .section-dark.sec-padding .col-lg-3{
+    border-radius: 14px;
+  }
+}
+
+.section-dark.sec-padding .col-lg-3:hover{
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+
+.newsletter .input_submit2{
+  box-shadow: 0 0 0 0 rgba(245,158,11,.6);
+}
+.newsletter .input_submit2:hover{
+  box-shadow: 0 0 0 6px rgba(245,158,11,.15);
+}
+
+
+/* =========================================================
+   ✅ MOBILE MENU FIX (ÚNICO) - sem scroll duplo / sem bug
+   ========================================================= */
+@media (max-width: 991px){
+
+  /* Scroll do menu inteiro (hamburguer aberto) */
+  #navbar-collapse-grid,
+  #header2 .navbar-collapse{
+    max-height: 78vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Desliga hover do desktop no mobile */
+  #header2 .navbar-nav > li.dropdown.yamm-fw:hover > .dropdown-menu{
+    display: none !important;
+  }
+
+  /* Dropdown vira bloco normal e NÃO cria barra interna */
+  #header2 .navbar-nav .dropdown-menu{
+    position: static !important;
+    float: none !important;
+    width: 100% !important;
+
+    display: none;                 /* abre via .open */
+    max-height: none !important;   /* sem scroll interno */
+    overflow: visible !important;
+
+    margin: 10px 0 0 !important;
+    padding: 14px !important;
+    border: 0 !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  /* Abre quando Bootstrap coloca .open */
+  #header2 .navbar-nav li.open > .dropdown-menu{
+    display: block !important;
+  }
+
+  /* Colunas do mega menu empilham em 1 coluna */
+  #header2 .yamm-content .row > [class*="col-"]{
+    width: 100% !important;
+    float: none !important;
+  }
+
+  /* Links mais clicáveis */
+  #header2 .dropdown-menu a{
+    padding: 10px 8px !important;
+    display: block !important;
+  }
+
+  /* Remove qualquer “scrollbar fantasma” dentro do dropdown */
+  #header2 .dropdown-menu,
+  #header2 .yamm-content{
+    overflow: visible !important;
+  }
+}
+</style>
 
 </head>
 
